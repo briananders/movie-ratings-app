@@ -1,0 +1,110 @@
+---
+title: Movie Ratings App
+---
+
+<script type="text/x-handlebars">
+  <div id="search-view">
+    {{input type="text" value=App.search keyPress=search placeholder="Search by Title"}} <button {{action 'search'}}>Search</button>
+  </div>
+
+  {{outlet}}
+
+  <footer>
+    &copy; 2014 Brian Anders
+  </footer>
+</script>
+
+<script type="text/x-handlebars" data-template-name="index">
+  <div class="movie-listings">
+    <h1>Popular Titles</h1>
+    {{#each movie in movies}}
+      <div {{action 'selectedMovie' movie}} class="movie-listing">
+        <img {{bind-attr src=movie.posters.thumbnail}}>
+        <ul>
+          <li class="movie-title">{{movie.title}}</li>
+          <li>{{movie.year}}<div role="img" {{bind-attr class="movie.mpaa_rating :rating"}}></div></li>
+        </ul>
+      </div>
+    {{/each}}
+  </div>
+</script>
+
+<script type="text/x-handlebars" data-template-name="search">
+  <div class="movie-listings">
+    {{#each movie in model.movies}}
+      <div {{action 'selectedMovie' movie}} class="movie-listing">
+        <img {{bind-attr src=movie.posters.thumbnail}}>
+        <ul>
+          <li class="movie-title">{{movie.title}}</li>
+          <li>{{movie.year}}<div role="img" {{bind-attr class="movie.mpaa_rating :rating"}}></div></li>
+        </ul>
+      </div>
+    {{else}}
+      <h2 class="no-results">Sorry, no results.</h2>
+      <h3 class="no-results">Are you sure that&apos;s a movie?</h2>
+    {{/each}}
+  </div>
+
+</script>
+
+<script type="text/x-handlebars" data-template-name="movie">
+  <div class="movie-profile">
+    <h1>{{rotten.title}}</h1>
+    <img id="main-poster" {{bind-attr src=imdb.urlPoster}}>
+    <h4>{{rotten.year}}</h4>
+    <div role="img" {{bind-attr class="movie.mpaa_rating :rating"}}></div>
+
+    <table>
+      <tr>
+        <th>
+        </th>
+        <th>
+          <a {{bind-attr href=imdb.urlIMDB}}>IMDb</a>
+        </th>
+        <th>
+          <a {{bind-attr href=rotten.links.alternate}}>Rotten Tomatoes</a>
+        </th>
+        <th>
+          <a {{bind-attr href=critic.url}}>Metacritic</a>
+        </th>
+        <th>
+          average
+        </th>
+      </tr>
+      <tr>
+        <td>
+          Critic Rating
+        </td>
+        <td>
+          {{imdb.metascore}}
+        </td>
+        <td>
+          {{rotten.ratings.critics_score}}
+        </td>
+        <td>
+          {{critic.score}}
+        </td>
+        <td>
+          {{averageCritic}}
+        </td>
+      </tr>
+      <tr>
+        <td>
+          User Rating
+        </td>
+        <td>
+          {{imdb.rating}}
+        </td>
+        <td>
+          {{rotten.ratings.audience_score}}
+        </td>
+        <td>
+          {{critic.avguserscore}}
+        </td>
+        <td>
+          {{averageNonCritic}}
+        </td>
+      </tr>
+    </table>
+  </div>
+</script>
