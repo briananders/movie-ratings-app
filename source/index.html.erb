@@ -54,7 +54,72 @@ title: Movie Ratings App
     <h4>{{rotten.year}}</h4>
     <div role="img" {{bind-attr class="movie.mpaa_rating :rating"}}></div>
 
-    <table>
+    <div id="bar-graph">
+      <div class="left-side">
+        <ul class="averages">
+          <li class="header">Averages</li>
+          <li>Overall</li>
+          <li>Critics</li>
+          <li>Users</li>
+        </ul>
+
+        <ul class="critics">
+          <li class="header">Critics</li>
+          <li>IMDb</li>
+          <li>Rotten Tomatoes</li>
+          <li>Metacritic</li>
+        </ul>
+
+        <ul class="users">
+          <li class="header">Users</li>
+          <li>IMDb</li>
+          <li>Rotten Tomatoes</li>
+          <li>Metacritic</li>
+        </ul>
+      </div>
+      <div class="values">
+        <ul class="averages">
+          <li class="header"></li>
+          <li>{{average}}</li>
+          <li>{{averageCritic}}</li>
+          <li>{{averageNonCritic}}</li>
+        </ul>
+        <ul class="critics">
+          <li class="header"></li>
+          <li>{{imdbCritic}}</li>
+          <li>{{rottenCritic}}</li>
+          <li>{{metaCritic}}</li>
+        </ul>
+        <ul class="users">
+          <li class="header"></li>
+          <li>{{imdbUser}}</li>
+          <li>{{rottenUser}}</li>
+          <li>{{metaUser}}</li>
+        </ul>
+      </div>
+      <div class="graph">
+        <ul class="averages">
+          <li class="header"></li>
+          <li class="bar" {{bind-attr style=averageStyles title=average}}></li>
+          <li class="bar" {{bind-attr style=averageCriticStyles title=averageCritic}}></li>
+          <li class="bar" {{bind-attr style=averageNonCriticStyles title=averageNonCritic}}></li>
+        </ul>
+        <ul class="critics">
+          <li class="header"></li>
+          <li class="bar" {{bind-attr style=imdbCriticStyles title=imdbCritic}}></li>
+          <li class="bar" {{bind-attr style=rottenCriticStyles title=rottenCritic}}></li>
+          <li class="bar" {{bind-attr style=metaCriticStyles title=metaCritic}}></li>
+        </ul>
+        <ul class="users">
+          <li class="header"></li>
+          <li class="bar" {{bind-attr style=imdbUserStyles title=imdbUser}}></li>
+          <li class="bar" {{bind-attr style=rottenUserStyles title=rottenUser}}></li>
+          <li class="bar" {{bind-attr style=metaUserStyles title=metaUser}}></li>
+        </ul>
+      </div>
+    </div>
+
+    {{!-- <table>
       <tr>
         <th>
         </th>
@@ -105,6 +170,6 @@ title: Movie Ratings App
           {{averageNonCritic}}
         </td>
       </tr>
-    </table>
+    </table> --}}
   </div>
 </script>

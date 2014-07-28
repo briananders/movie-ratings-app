@@ -87,6 +87,8 @@ h1 {
   width: 214px;
   height: 317px;
   margin-top: 30px;
+  border: 10px solid $Neon-Orange;
+  border-radius: 5px;
 }
 
 h2.no-results {
@@ -212,6 +214,46 @@ table {
   //   height: 17px;
   //   width: 31px;
   // }
+}
+
+#bar-graph {
+  .left-side {
+    width: 180px;
+    float: left;
+  }
+  .values {
+    width: 40px;
+    float: left;
+  }
+  .graph {
+    width: 100%;
+    padding-left: 220px;
+    position: relative;
+    top: 5px;
+    @include box-sizing(border-box);
+  }
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+  li {
+    padding: 5px 0;
+    line-height: 20px;
+    height: 20px;
+    margin: 5px 0;
+
+    &.header {
+      font-size: 20px;
+      background-color: $light-gray;
+      line-height: 24px;
+      height: 24px;
+    }
+  }
+  .bar {
+    width: 0%;
+    background-color: #7F0000;
+    @include transition(background-color 1.5s ease, width 1.5s ease);
+  }
 }
 
 footer {
