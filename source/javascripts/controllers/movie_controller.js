@@ -172,10 +172,10 @@ App.MovieController = Ember.ObjectController.extend({
 
   getColor: function(num) {
     if(num >= 80) return "#6FFF00"; //green
-    if(num >= 60) return "#FFFF00"; //yellow
-    if(num >= 40) return "#FFA700"; //orange
-    if(num >= 20) return "#FE0001"; //red
-    return "#7F0000"; //dark red
+    if(num >= 60) return "#4D4DFF"; //blue
+    if(num >= 40) return "#FFFF00"; //yellow
+    if(num >= 20) return "#FFA700"; //orange
+    return "#FE0001"; //red
   },
 
   actions: {
